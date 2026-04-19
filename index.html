@@ -114,15 +114,17 @@
                             <div class="project-industry">Fintech</div>
                         </div>
                         <h3>Credit Card Fraud Detection System</h3>
-                        
+
                         <div class="project-details">
                             <div class="detail-group">
                                 <h4>The Problem</h4>
-                                <p>High rate of fraudulent transactions causing significant operational overhead and revenue loss for payment services.</p>
+                                <p>High rate of fraudulent transactions causing significant operational overhead and
+                                    revenue loss for payment services.</p>
                             </div>
                             <div class="detail-group">
                                 <h4>The Solution</h4>
-                                <p>Developed an ML model predicting fraudulent transactions in real time via API, smoothly integrated into the Risk Engine Core.</p>
+                                <p>Developed an ML model predicting fraudulent transactions in real time via API,
+                                    smoothly integrated into the Risk Engine Core.</p>
                             </div>
                         </div>
 
@@ -147,15 +149,17 @@
                             <div class="project-industry">Healthcare</div>
                         </div>
                         <h3>Healthcare AI Assistant</h3>
-                        
+
                         <div class="project-details">
                             <div class="detail-group">
                                 <h4>The Problem</h4>
-                                <p>Complex and manual patient operations delaying appointment bookings, consultations, and triage.</p>
+                                <p>Complex and manual patient operations delaying appointment bookings, consultations,
+                                    and triage.</p>
                             </div>
                             <div class="detail-group">
                                 <h4>The Solution</h4>
-                                <p>Built a full-featured patient assistant using Agentic AI flows for appointment scheduling, AI consultations, and live-agent handover.</p>
+                                <p>Built a full-featured patient assistant using Agentic AI flows for appointment
+                                    scheduling, AI consultations, and live-agent handover.</p>
                             </div>
                         </div>
 
@@ -181,15 +185,17 @@
                             <div class="project-industry">Identity</div>
                         </div>
                         <h3>OCR & Face Verification Engine</h3>
-                        
+
                         <div class="project-details">
                             <div class="detail-group">
                                 <h4>The Problem</h4>
-                                <p>Manual KYC/KYB data extraction from identity documents (KTP, SIM, NPWP) leading to bottlenecks.</p>
+                                <p>Manual KYC/KYB data extraction from identity documents (KTP, SIM, NPWP) leading to
+                                    bottlenecks.</p>
                             </div>
                             <div class="detail-group">
                                 <h4>The Solution</h4>
-                                <p>Developed a custom Computer Vision pipeline for document extraction and a face comparison system using landmark embeddings.</p>
+                                <p>Developed a custom Computer Vision pipeline for document extraction and a face
+                                    comparison system using landmark embeddings.</p>
                             </div>
                         </div>
 
@@ -350,6 +356,42 @@
             <p>&copy; <span id="year"></span> Surahma Jaya. Designed for impact.</p>
         </div>
     </footer>
+
+    <!-- Dialogflow Chatbot Integration -->
+    <link rel="stylesheet"
+        href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css">
+    <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
+    <df-messenger location="us-central1" project-id="juara-gcp-484710" agent-id="d26ffc69-067c-41af-9916-5999ff244914"
+        language-code="en" max-query-length="-1">
+        <df-messenger-chat-bubble chat-title="Personal Assistant for Portfolio">
+        </df-messenger-chat-bubble>
+    </df-messenger>
+    <style>
+        df-messenger {
+            z-index: 999;
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+
+            /* Theming matched to the dark SaaS design */
+            --df-messenger-font-color: var(--text-primary);
+            --df-messenger-font-family: var(--font-sans);
+            --df-messenger-chat-background: var(--bg-secondary);
+            --df-messenger-message-user-background: var(--accent-color);
+            --df-messenger-message-bot-background: rgba(255, 255, 255, 0.05);
+            /* Glass-like grey */
+
+            /* Chat bubble and Titlebar Customization */
+            --df-messenger-chat-bubble-background: var(--accent-color);
+            --df-messenger-chat-bubble-icon-color: #ffffff;
+            --df-messenger-button-titlebar-color: var(--bg-color);
+            --df-messenger-button-titlebar-font-color: var(--text-primary);
+            --df-messenger-titlebar-background: var(--bg-color);
+            --df-messenger-titlebar-title-font-color: var(--text-primary);
+            --df-messenger-minimized-chat-close-icon-color: var(--text-primary);
+            --df-messenger-user-message-font-color: #ffffff;
+        }
+    </style>
 
     <script src="./script.js"></script>
 </body>
