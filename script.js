@@ -74,3 +74,64 @@ function startCounters(counters) {
         updateCounter();
     });
 }
+
+// =========================================
+// DF MESSENGER - Shadow DOM Style Injection
+// Forces readable text color inside chatbot input
+// =========================================
+function injectDfMessengerStyles() {
+    const dfMessenger = document.querySelector('df-messenger');
+    if (!dfMessenger) return;
+
+    const darkInputCSS = `
+        input, textarea, [contenteditable] {
+            color: #e8e8f0 !important;
+            caret-color: #6C63FF !important;
+        }
+        input::placeholder, textarea::placeholder {
+            color: #666680 !important;
+        }
+    `;
+
+    const injectIntoShadow = (el) => {
+        if (!el || !el.shadowRoot) return;
+        // Avoid duplicate injection
+        if (el.shadowRoot.querySelector('[data-df-dark-fix]')) return;
+        const style = document.createElement('style');
+        style.setAttribute('data-df-dark-fix', 'true');
+        style.textContent = darkInputCSS;
+        el.shadowRoot.appendChild(style);
+    };
+
+    const deepInject = (root) => {
+        if (!root) return;
+        const elements = root.querySelectorAll('*');
+        elements.forEach(el => {
+            if (el.shadowRoot) {
+                injectIntoShadow(el);
+                deepInject(el.shadowRoot);
+            }
+        });
+    };
+
+    const tryInject = () => {
+        if (!dfMessenger.shadowRoot) return;
+        injectIntoShadow(dfMessenger);
+        deepInject(dfMessenger.shadowRoot);
+    };
+
+    // Retry multiple times as shadow roots are lazily created
+    [500, 1500, 3000, 5000].forEach(ms => setTimeout(tryInject, ms));
+
+    // Re-inject when user clicks the chat bubble (opens the panel)
+    dfMessenger.addEventListener('click', () => {
+        [300, 800, 1500].forEach(ms => setTimeout(tryInject, ms));
+    });
+}
+
+// Initialize after page load
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(injectDfMessengerStyles, 500));
+} else {
+    setTimeout(injectDfMessengerStyles, 500);
+}

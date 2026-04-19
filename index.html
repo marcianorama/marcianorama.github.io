@@ -367,29 +367,134 @@
         </df-messenger-chat-bubble>
     </df-messenger>
     <style>
+        /* ═══════════════════════════════════════════
+           DF MESSENGER DARK THEME OVERRIDES
+           Must be on :root to override the defaults
+           loaded by df-messenger-default.css
+           ═══════════════════════════════════════════ */
+        :root {
+            /* ── Core Brand Color ── */
+            --df-messenger-primary-color: #6C63FF !important;
+
+            /* ── Borders ── */
+            --df-messenger-border-color: rgba(255, 255, 255, 0.10) !important;
+            --df-messenger-chat-border: 1px solid rgba(255, 255, 255, 0.10) !important;
+            --df-messenger-chat-border-radius: 16px !important;
+
+            /* ── Chat Window ── */
+            --df-messenger-chat-background: #0c0c14 !important;
+            --df-messenger-chat-window-width: 380px !important;
+            --df-messenger-chat-window-height: 520px !important;
+            --df-messenger-chat-padding: 20px 20px 8px 20px !important;
+
+            /* ── Font / Text Color ── */
+            --df-messenger-element-font-color: #e8e8f0 !important;
+
+            /* ── Title Bar ── */
+            --df-messenger-titlebar-background: #111119 !important;
+            --df-messenger-titlebar-font-color: #ffffff !important;
+            --df-messenger-titlebar-icon-font-color: #ffffff !important;
+            --df-messenger-titlebar-border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+            --df-messenger-titlebar-padding: 14px 20px !important;
+            --df-messenger-titlebar-title-font-size: 16px !important;
+            --df-messenger-titlebar-title-line-height: 24px !important;
+            --df-messenger-titlebar-button-background-hover: rgba(255, 255, 255, 0.08) !important;
+            --df-messenger-titlebar-button-color-inactive: #a0a0b0 !important;
+            --df-messenger-titlebar-button-background-active: #1a1a2e !important;
+            --df-messenger-titlebar-button-color-active: #6C63FF !important;
+
+            /* ── Message Bubbles ── */
+            --df-messenger-message-bot-background: #1a1a2e !important;
+            --df-messenger-message-user-background: #6C63FF !important;
+            --df-messenger-message-border-radius: 14px !important;
+            --df-messenger-message-bot-border-top-left-radius: 4px !important;
+            --df-messenger-message-bot-stack-border-top-left-radius: 4px !important;
+            --df-messenger-message-bot-stack-border-bottom-left-radius: 4px !important;
+            --df-messenger-message-user-border-top-right-radius: 4px !important;
+            --df-messenger-message-user-stack-border-top-right-radius: 4px !important;
+            --df-messenger-message-user-stack-border-bottom-right-radius: 4px !important;
+            --df-messenger-message-padding: 12px 16px !important;
+            --df-messenger-message-stack-spacing: 6px !important;
+            --df-messenger-message-inline-citation-background: #6C63FF !important;
+            --df-messenger-message-inline-citation-font-color: #ffffff !important;
+
+            /* ── Input Area ── */
+            --df-messenger-input-background: #111119 !important;
+            --df-messenger-input-border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+            --df-messenger-input-box-background: #1a1a28 !important;
+            --df-messenger-input-box-border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            --df-messenger-input-box-border-radius: 12px !important;
+            --df-messenger-input-box-padding: 12px 20px !important;
+            --df-messenger-input-box-focus-border: 2px solid #6C63FF !important;
+            --df-messenger-input-box-focus-padding: 11px 19px !important;
+            --df-messenger-input-padding: 12px 16px 20px 16px !important;
+
+            /* ── Chat Bubble (Floating Button) ── */
+            --df-messenger-chat-bubble-background: #6C63FF !important;
+            --df-messenger-chat-bubble-icon-color: #ffffff !important;
+
+            /* ── Scroll Button ── */
+            --df-messenger-chat-scroll-button-background: #6C63FF !important;
+            --df-messenger-chat-scroll-button-font-color: #ffffff !important;
+
+            /* ── Links ── */
+            --df-messenger-link-font-color: #8B83FF !important;
+            --df-messenger-link-visited-font-color: #8B83FF !important;
+            --df-messenger-link-hover-font-color: #a89eff !important;
+            --df-messenger-link-background-color: rgba(108, 99, 255, 0.1) !important;
+            --df-messenger-link-border: 1px solid rgba(108, 99, 255, 0.3) !important;
+
+            /* ── Chips ── */
+            --df-messenger-chips-font-color: #d0d0e0 !important;
+            --df-messenger-chips-icon-font-color: #d0d0e0 !important;
+            --df-messenger-chips-border-radius: 10px !important;
+
+            /* ── Cards ── */
+            --df-messenger-card-border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            --df-messenger-card-border-radius: 14px !important;
+
+            /* ── Rich Feedback ── */
+            --df-messenger-message-rich-feedback-background: #1a1a2e !important;
+            --df-messenger-message-rich-feedback-border-radius: 14px !important;
+            --df-messenger-message-rich-feedback-chips-background: #1a1a2e !important;
+            --df-messenger-message-rich-feedback-chips-background-active: rgba(108, 99, 255, 0.15) !important;
+            --df-messenger-message-rich-feedback-chips-font-color: #d0d0e0 !important;
+            --df-messenger-message-rich-feedback-chips-font-color-active: #ffffff !important;
+            --df-messenger-message-rich-feedback-submit-font-color: #d0d0e0 !important;
+            --df-messenger-message-feedback-icon-background: #1a1a2e !important;
+            --df-messenger-message-feedback-icon-border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            --df-messenger-message-feedback-icon-background-hover: rgba(255, 255, 255, 0.06) !important;
+            --df-messenger-message-feedback-icon-font-color-active: #6C63FF !important;
+
+            /* ── Citations ── */
+            --df-messenger-citations-font-color: #d0d0e0 !important;
+            --df-messenger-citations-border-color: rgba(255, 255, 255, 0.08) !important;
+
+            /* ── Tables ── */
+            --df-messenger-table-border-color: rgba(255, 255, 255, 0.08) !important;
+            --df-messenger-table-header-background: #1a1a2e !important;
+            --df-messenger-table-header-border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
+            --df-messenger-table-header-border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+
+            /* ── Function Call Button ── */
+            --df-messenger-chat-function-call-button-background: #6C63FF !important;
+            --df-messenger-chat-function-call-button-font-color: #ffffff !important;
+        }
+
+        /* ── Positioning & inherited color ── */
         df-messenger {
             z-index: 999;
             position: fixed;
             bottom: 24px;
             right: 24px;
+            color: #e8e8f0;
+            --df-messenger-font-color: #e8e8f0;
+        }
 
-            /* Theming matched to the dark SaaS design */
-            --df-messenger-font-color: var(--text-primary);
-            --df-messenger-font-family: var(--font-sans);
-            --df-messenger-chat-background: var(--bg-secondary);
-            --df-messenger-message-user-background: var(--accent-color);
-            --df-messenger-message-bot-background: rgba(255, 255, 255, 0.05);
-            /* Glass-like grey */
-
-            /* Chat bubble and Titlebar Customization */
-            --df-messenger-chat-bubble-background: var(--accent-color);
-            --df-messenger-chat-bubble-icon-color: #ffffff;
-            --df-messenger-button-titlebar-color: var(--bg-color);
-            --df-messenger-button-titlebar-font-color: var(--text-primary);
-            --df-messenger-titlebar-background: var(--bg-color);
-            --df-messenger-titlebar-title-font-color: var(--text-primary);
-            --df-messenger-minimized-chat-close-icon-color: var(--text-primary);
-            --df-messenger-user-message-font-color: #ffffff;
+        /* Force input text color via inheritance */
+        df-messenger,
+        df-messenger * {
+            --df-messenger-input-font-color: #e8e8f0;
         }
     </style>
 
