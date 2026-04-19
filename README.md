@@ -9,7 +9,7 @@ Welcome to my personal portfolio repository! I am Surahma Jaya, a Senior AI Spec
 ## 🌐 Live Demo
 
 Experience the live portfolio here:
-👉 **[Surahma Jaya Portfolio](https://username.github.io)**  *(Update this URL once deployed)*
+👉 **[Surahma Jaya Portfolio](https://marcianorama.github.io)**
 
 ---
 
